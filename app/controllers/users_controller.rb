@@ -5,7 +5,9 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-    render json: @users, status: :ok
+    render json: @users.as_json(
+      only: [:id, :email, :referral_code]
+    ), status: :ok
   end
 
   # GET /users/{username}
@@ -16,6 +18,16 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
+
+    if user_params[:referral_code]
+      referrer = User.find_by(referral_code: user_params[:referral_code])
+      if referrer.nil?
+        render json: { errors: ["wrong code"] }, status: :unprocessable_entity 
+        return
+      end
+      @user.referrer = referrer
+    end
+
     if @user.save
       render json: @user, status: :created
     else
@@ -40,14 +52,12 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by_username!(params[:_username])
+    @user = User.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       render json: { errors: 'User not found' }, status: :not_found
   end
 
   def user_params
-    params.permit(
-      :avatar, :name, :username, :email, :password, :password_confirmation
-    )
+    params.permit(:name, :email, :password, :password_confirmation, :referral_code)
   end
 end
