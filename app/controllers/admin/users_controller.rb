@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   before_action :authorize_request, except: :create
   before_action :find_user, except: %i[create index]
 
@@ -15,26 +15,6 @@ class UsersController < ApplicationController
     render json: @user, status: :ok
   end
 
-  # POST /users
-  def create
-    @user = User.new(user_params)
-
-    if user_params[:referral_code]
-      referrer = User.find_by(referral_code: user_params[:referral_code])
-      if referrer.nil?
-        render json: { errors: ["wrong code"] }, status: :unprocessable_entity 
-        return
-      end
-      @user.referrer = referrer
-    end
-
-    if @user.save
-      render json: @user, status: :created
-    else
-      render json: { errors: @user.errors.full_messages },
-             status: :unprocessable_entity
-    end
-  end
 
   # PUT /users/{username}
   def update

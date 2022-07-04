@@ -7,7 +7,7 @@ class User < ApplicationRecord
             if: -> { new_record? || !password.nil? }
   belongs_to :referrer, optional: true, class_name: 'User', foreign_key: :referrer_id
   has_many :referrals, class_name: 'User', foreign_key: :referrer_id
-  
+  has_many :user_transactions
   before_create :generate_referral_code
 
   private

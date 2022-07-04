@@ -3036,3 +3036,1074 @@ No serializer found for resource: {"id"=>1, "email"=>"one@gmail.com", "referral_
 Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 4.6ms | Allocations: 4181)
 
 
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserTransactions (20220704103608)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "user_transactions" ("id" bigserial primary key, "amount" decimal, "action" integer, "status" integer, "plan_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4e8d2b028b"
+FOREIGN KEY ("plan_id")
+  REFERENCES "plans" ("id")
+, CONSTRAINT "fk_rails_e0527492c6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_plan_id" ON "user_transactions" ("plan_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_user_id" ON "user_transactions" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220704103608"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/auth/login" for ::1 at 2022-07-04 13:52:19 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"admin@admin.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"admin@admin.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 263ms (Views: 1.0ms | ActiveRecord: 3.8ms | Allocations: 13802)
+
+
+Started POST "/auth/login" for ::1 at 2022-07-04 13:52:19 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"admin@admin.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"admin@admin.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Started GET "/ws/system/" for ::1 at 2022-07-04 13:52:19 +0300
+Started GET "/admin/exchanges/" for ::1 at 2022-07-04 13:52:19 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/admin/exchanges"):
+  
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 252ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 42961)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 13:52:19 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/admin/exchanges/" for ::1 at 2022-07-04 13:52:19 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/exchanges"):
+  
+Started GET "/admin/plans/" for ::1 at 2022-07-04 13:52:22 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.6ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 200 OK in 11ms (Views: 7.4ms | ActiveRecord: 0.6ms | Allocations: 2835)
+
+
+Started POST "/admin/plans/" for ::1 at 2022-07-04 13:52:36 +0300
+Processing by Admin::PlansController#create as JSON
+  Parameters: {"name"=>"Plan One", "days"=>"90", "profit"=>"10", "penalty"=>"8", "plan_type"=>0, "plan"=>{"days"=>"90", "name"=>"Plan One", "profit"=>"10", "penalty"=>"8", "plan_type"=>0}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mPlan Create (1.2ms)[0m  [1m[32mINSERT INTO "plans" ("days", "name", "profit", "penalty", "plan_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["days", 90], ["name", "Plan One"], ["profit", 10], ["penalty", 8], ["plan_type", 0], ["created_at", "2022-07-04 10:52:36.199688"], ["updated_at", "2022-07-04 10:52:36.199688"]]
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 201 Created in 18ms (Views: 4.4ms | ActiveRecord: 4.9ms | Allocations: 6131)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-04 13:52:36 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 1144)
+
+
+Started POST "/admin/plans/" for ::1 at 2022-07-04 13:52:49 +0300
+Processing by Admin::PlansController#create as JSON
+  Parameters: {"name"=>"Plan Two", "days"=>"60", "profit"=>"8", "penalty"=>"4", "plan_type"=>0, "plan"=>{"days"=>"60", "name"=>"Plan Two", "profit"=>"8", "penalty"=>"4", "plan_type"=>0}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mPlan Create (0.5ms)[0m  [1m[32mINSERT INTO "plans" ("days", "name", "profit", "penalty", "plan_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["days", 60], ["name", "Plan Two"], ["profit", 8], ["penalty", 4], ["plan_type", 0], ["created_at", "2022-07-04 10:52:49.853338"], ["updated_at", "2022-07-04 10:52:49.853338"]]
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 201 Created in 8ms (Views: 0.8ms | ActiveRecord: 0.9ms | Allocations: 2215)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-04 13:52:49 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.59ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 1143)
+
+
+Started POST "/admin/plans/" for ::1 at 2022-07-04 13:53:02 +0300
+Processing by Admin::PlansController#create as JSON
+  Parameters: {"name"=>"Plan Three", "days"=>"30", "profit"=>"6", "penalty"=>"4", "plan_type"=>0, "plan"=>{"days"=>"30", "name"=>"Plan Three", "profit"=>"6", "penalty"=>"4", "plan_type"=>0}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mPlan Create (0.6ms)[0m  [1m[32mINSERT INTO "plans" ("days", "name", "profit", "penalty", "plan_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["days", 30], ["name", "Plan Three"], ["profit", 6], ["penalty", 4], ["plan_type", 0], ["created_at", "2022-07-04 10:53:02.553302"], ["updated_at", "2022-07-04 10:53:02.553302"]]
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.62ms)
+Completed 201 Created in 7ms (Views: 1.4ms | ActiveRecord: 1.1ms | Allocations: 2136)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-04 13:53:02 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.15ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.3ms | Allocations: 1287)
+
+
+Started POST "/admin/plans/" for ::1 at 2022-07-04 13:53:17 +0300
+Processing by Admin::PlansController#create as JSON
+  Parameters: {"name"=>"Flexible Plan", "days"=>"0", "profit"=>"5", "penalty"=>"0", "plan_type"=>1, "plan"=>{"days"=>"0", "name"=>"Flexible Plan", "profit"=>"5", "penalty"=>"0", "plan_type"=>1}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mPlan Create (0.5ms)[0m  [1m[32mINSERT INTO "plans" ("days", "name", "profit", "penalty", "plan_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["days", 0], ["name", "Flexible Plan"], ["profit", 5], ["penalty", 0], ["plan_type", 1], ["created_at", "2022-07-04 10:53:17.552188"], ["updated_at", "2022-07-04 10:53:17.552188"]]
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.55ms)
+Completed 201 Created in 8ms (Views: 1.4ms | ActiveRecord: 1.1ms | Allocations: 2122)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-04 13:53:17 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.02ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.4ms | Allocations: 1430)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPlan Load (0.5ms)[0m  [1m[34mSELECT "plans".* FROM "plans" ORDER BY "plans"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserTransaction Create (8.6ms)[0m  [1m[32mINSERT INTO "user_transactions" ("amount", "action", "status", "plan_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["amount", "1000.0"], ["action", 0], ["status", 0], ["plan_id", 1], ["user_id", 6], ["created_at", "2022-07-04 10:55:08.158204"], ["updated_at", "2022-07-04 10:55:08.158204"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/adimin/user_transactions" for ::1 at 2022-07-04 13:56:26 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/adimin/user_transactions"):
+  
+Started GET "/admin/user_transactions" for ::1 at 2022-07-04 13:56:36 +0300
+Processing by Admin::UserTransactionsController#index as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "user_transaction"=>{}}
+  [1m[36mUserTransaction Load (0.6ms)[0m  [1m[34mSELECT "user_transactions".* FROM "user_transactions"[0m
+  ↳ app/controllers/admin/user_transactions_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/admin/user_transactions_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/admin/user_transactions_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:7:in `referrer'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (31.48ms)
+Completed 200 OK in 48ms (Views: 38.5ms | ActiveRecord: 10.8ms | Allocations: 18188)
+
+
+Started GET "/profile" for ::1 at 2022-07-04 14:04:31 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProfilesController#index as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 1137)
+
+
+Started GET "/profile" for ::1 at 2022-07-04 14:04:55 +0300
+Processing by ProfilesController#index as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."referrer_id" = $1[0m  [["referrer_id", 5]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:5:in `index'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.62ms)
+Completed 200 OK in 43ms (Views: 10.8ms | ActiveRecord: 5.7ms | Allocations: 18047)
+
+
+Started POST "/users" for ::1 at 2022-07-04 14:05:11 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/users"):
+  
+Started POST "/auth/login" for ::1 at 2022-07-04 14:05:22 +0300
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "authentication"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "five@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 280ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 1492)
+
+
+Started GET "/profile" for ::1 at 2022-07-04 14:05:33 +0300
+Processing by ProfilesController#index as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:7:in `referrer'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."referrer_id" = $1[0m  [["referrer_id", 6]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:5:in `index'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.27ms)
+Completed 200 OK in 9ms (Views: 5.3ms | ActiveRecord: 0.8ms | Allocations: 2896)
+
+
+Started POST "/auth/login" for ::1 at 2022-07-04 14:07:48 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "five@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 277ms (Views: 0.5ms | ActiveRecord: 0.8ms | Allocations: 806)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 14:07:48 +0300
+Started GET "/admin/exchanges/" for ::1 at 2022-07-04 14:07:48 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/admin/exchanges"):
+  
+Started GET "/admin/plans/" for ::1 at 2022-07-04 14:07:51 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (1.0ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.97ms)
+Completed 200 OK in 18ms (Views: 10.3ms | ActiveRecord: 4.5ms | Allocations: 6164)
+
+
+Started GET "/admin/revenues/" for ::1 at 2022-07-04 14:07:53 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/revenues"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 14:08:32 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 14:08:33 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started POST "/token/" for ::1 at 2022-07-04 14:08:51 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/token"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 14:09:13 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 14:09:13 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 14:09:28 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 14:09:28 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started POST "/auth/login" for ::1 at 2022-07-04 14:17:06 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "five@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 304ms (Views: 0.5ms | ActiveRecord: 11.9ms | Allocations: 4024)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 14:17:06 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 14:17:06 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/user/requests/?page_number=1&&page_size=10" for ::1 at 2022-07-04 14:17:18 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/user/requests"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 14:19:44 +0300
+Processing by ProfilesController#transactions as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 8.2ms | Allocations: 9173)
+
+
+  
+NameError (undefined local variable or method `surrent_user' for #<ProfilesController:0x0000000000f438>
+
+    transactions = UserTransaction.where(user_id: surrent_user.id)
+                                                  ^^^^^^^^^^^^
+Did you mean?  current_user
+               @current_user):
+  
+app/controllers/profiles_controller.rb:9:in `transactions'
+Started GET "/profile/transactions" for ::1 at 2022-07-04 14:20:02 +0300
+Processing by ProfilesController#transactions as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUserTransaction Load (4.7ms)[0m  [1m[34mSELECT "user_transactions".* FROM "user_transactions" WHERE "user_transactions"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/profiles_controller.rb:10:in `transactions'
+[active_model_serializers]   [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:10:in `transactions'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:10:in `transactions'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:7:in `referrer'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.57ms)
+Completed 200 OK in 30ms (Views: 10.3ms | ActiveRecord: 13.0ms | Allocations: 19962)
+
+
+Started GET "/profile/transactions" for ::1 at 2022-07-04 14:20:03 +0300
+Processing by ProfilesController#transactions as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUserTransaction Load (0.4ms)[0m  [1m[34mSELECT "user_transactions".* FROM "user_transactions" WHERE "user_transactions"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/profiles_controller.rb:10:in `transactions'
+[active_model_serializers]   [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:10:in `transactions'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:10:in `transactions'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:7:in `referrer'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.74ms)
+Completed 200 OK in 12ms (Views: 8.9ms | ActiveRecord: 1.2ms | Allocations: 4655)
+
+
+Started GET "/user/requests/?page_number=1&&page_size=10" for ::1 at 2022-07-04 15:04:01 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/user/requests"):
+  
+Started GET "/user/requests/?page_number=1&&page_size=10" for ::1 at 2022-07-04 15:04:14 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/user/requests"):
+  
+Started GET "/user/profile/transactions" for ::1 at 2022-07-04 15:05:50 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/user/profile/transactions"):
+  
+Started GET "/user/profile/transactions" for ::1 at 2022-07-04 15:06:21 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/user/profile/transactions"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:06:26 +0300
+Processing by ProfilesController#transactions as JSON
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 2.1ms | Allocations: 319)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:06:27 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:06:27 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:06:35 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:06:35 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:08:04 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:08:04 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:08:17 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:08:17 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:08:52 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:08:52 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:09:46 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:09:46 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:09:47 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:09:47 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:09:49 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:09:49 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:10:22 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:10:22 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started POST "/auth/login" for ::1 at 2022-07-04 15:10:29 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "five@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 340ms (Views: 0.4ms | ActiveRecord: 20.5ms | Allocations: 4450)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:10:29 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:10:29 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:10:43 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:10:43 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:11:08 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:11:08 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:11:42 +0300
+Processing by ProfilesController#transactions as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 221)
+
+
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:11:42 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:11:42 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:12:26 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:12:26 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:12:28 +0300
+Processing by ProfilesController#transactions as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 206)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:12:28 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:12:28 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:12:29 +0300
+Processing by ProfilesController#transactions as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:12:29 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:12:29 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:12:29 +0300
+Processing by ProfilesController#transactions as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:12:29 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:12:29 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:12:29 +0300
+Processing by ProfilesController#transactions as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:12:29 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:12:29 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:12:31 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:12:31 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started POST "/auth/login" for ::1 at 2022-07-04 15:12:39 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (9.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "five@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 289ms (Views: 0.3ms | ActiveRecord: 9.2ms | Allocations: 786)
+
+
+Started GET "/exchanges/" for ::1 at 2022-07-04 15:12:40 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 15:12:40 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:12:42 +0300
+Processing by ProfilesController#transactions as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUserTransaction Load (4.2ms)[0m  [1m[34mSELECT "user_transactions".* FROM "user_transactions" WHERE "user_transactions"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/profiles_controller.rb:10:in `transactions'
+[active_model_serializers]   [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:10:in `transactions'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:10:in `transactions'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:7:in `referrer'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.79ms)
+Completed 200 OK in 23ms (Views: 15.2ms | ActiveRecord: 5.2ms | Allocations: 4657)
+
+
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:13:21 +0300
+Processing by ProfilesController#transactions as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUserTransaction Load (0.5ms)[0m  [1m[34mSELECT "user_transactions".* FROM "user_transactions" WHERE "user_transactions"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/profiles_controller.rb:10:in `transactions'
+[active_model_serializers]   [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:10:in `transactions'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:10:in `transactions'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:7:in `referrer'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.18ms)
+Completed 200 OK in 23ms (Views: 8.1ms | ActiveRecord: 1.6ms | Allocations: 4547)
+
+
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:17:21 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProfilesController#transactions as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+Completed 500 Internal Server Error in 59ms (ActiveRecord: 12.5ms | Allocations: 17577)
+
+
+  
+NoMethodError (undefined method `user_transactions' for #<User id: 6, name: nil, username: nil, email: "five@gmail.com", password_digest: [FILTERED], created_at: "2022-07-04 09:00:41.406151000 +0000", updated_at: "2022-07-04 09:00:41.406151000 +0000", referrer_id: 4, referral_code: "0f6423">):
+  
+app/controllers/profiles_controller.rb:9:in `transactions'
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:19:03 +0300
+  
+SyntaxError (/Users/amir/Documents/stake-gate/app/controllers/profiles_controller.rb:10: syntax error, unexpected '?'
+    page = params[:page] ?? 1
+                          ^
+):
+  
+app/controllers/profiles_controller.rb:10: syntax error, unexpected '?'
+app/controllers/profiles_controller.rb:10: syntax error, unexpected '?'
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:19:23 +0300
+Processing by ProfilesController#transactions as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 5.1ms | Allocations: 9803)
+
+
+  
+NoMethodError (undefined method `user_transactions' for #<User id: 6, name: nil, username: nil, email: "five@gmail.com", password_digest: [FILTERED], created_at: "2022-07-04 09:00:41.406151000 +0000", updated_at: "2022-07-04 09:00:41.406151000 +0000", referrer_id: 4, referral_code: "0f6423">):
+  
+app/controllers/profiles_controller.rb:11:in `transactions'
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:19:43 +0300
+Processing by ProfilesController#transactions as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUserTransaction Load (0.6ms)[0m  [1m[34mSELECT "user_transactions".* FROM "user_transactions" WHERE "user_transactions"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 6], ["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/controllers/profiles_controller.rb:11:in `transactions'
+[active_model_serializers]   [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:11:in `transactions'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:7:in `referrer'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.71ms)
+Completed 200 OK in 48ms (Views: 15.2ms | ActiveRecord: 12.6ms | Allocations: 24328)
+
+
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:29:18 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/amir/Documents/stake-gate/app/controllers/profiles_controller.rb:10: syntax error, unexpected integer literal, expecting ':'
+...params[:page] ? params[:page] 1
+...                              ^
+):
+  
+app/controllers/profiles_controller.rb:10: syntax error, unexpected integer literal, expecting ':'
+app/controllers/profiles_controller.rb:10: syntax error, unexpected integer literal, expecting ':'
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:29:39 +0300
+Processing by ProfilesController#transactions as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUserTransaction Count (5.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_transactions" WHERE "user_transactions"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/profiles_controller.rb:13:in `transactions'
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 14.8ms | Allocations: 18584)
+
+
+  
+NoMethodError (undefined method `ceil' for Math:Module
+
+    total_pages = Math.ceil total_records / per_page
+                      ^^^^^):
+  
+app/controllers/profiles_controller.rb:14:in `transactions'
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:30:18 +0300
+Processing by ProfilesController#transactions as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUserTransaction Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_transactions" WHERE "user_transactions"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/profiles_controller.rb:13:in `transactions'
+[active_model_serializers]   [1m[36mUserTransaction Load (0.2ms)[0m  [1m[34mSELECT "user_transactions".* FROM "user_transactions" WHERE "user_transactions"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 6], ["LIMIT", 10], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:16:in `transactions'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.53ms)
+Completed 200 OK in 29ms (Views: 5.4ms | ActiveRecord: 11.5ms | Allocations: 14112)
+
+
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:32:07 +0300
+Processing by ProfilesController#transactions as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUserTransaction Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_transactions" WHERE "user_transactions"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/profiles_controller.rb:13:in `transactions'
+[active_model_serializers]   [1m[36mUserTransaction Load (0.1ms)[0m  [1m[34mSELECT "user_transactions".* FROM "user_transactions" WHERE "user_transactions"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 6], ["LIMIT", 10], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:16:in `transactions'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.11ms)
+Completed 200 OK in 16ms (Views: 2.0ms | ActiveRecord: 6.3ms | Allocations: 11708)
+
+
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:32:15 +0300
+Processing by ProfilesController#transactions as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUserTransaction Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_transactions" WHERE "user_transactions"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/profiles_controller.rb:13:in `transactions'
+[active_model_serializers]   [1m[36mUserTransaction Load (1.6ms)[0m  [1m[34mSELECT "user_transactions".* FROM "user_transactions" WHERE "user_transactions"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 6], ["LIMIT", 10], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:17:in `transactions'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (19.5ms)
+Completed 200 OK in 36511ms (Views: 19.3ms | ActiveRecord: 9.3ms | Allocations: 46449)
+
+
+Started GET "/profile/transactions" for ::1 at 2022-07-04 15:32:53 +0300
+Processing by ProfilesController#transactions as */*
+  Parameters: {"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed", "profile"=>{"email"=>"five@gmail.com", "password"=>"[FILTERED]", "referral_code"=>"afc6ed"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUserTransaction Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_transactions" WHERE "user_transactions"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/controllers/profiles_controller.rb:13:in `transactions'
+[active_model_serializers]   [1m[36mUserTransaction Load (0.9ms)[0m  [1m[34mSELECT "user_transactions".* FROM "user_transactions" WHERE "user_transactions"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 6], ["LIMIT", 10], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:17:in `transactions'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.6ms)
+Completed 200 OK in 4020ms (Views: 8.5ms | ActiveRecord: 7.8ms | Allocations: 13501)
+
+
+Started GET "/exchanges/" for ::1 at 2022-07-04 17:43:06 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 17:43:06 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started POST "/signup/" for ::1 at 2022-07-04 17:43:53 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 17:51:13 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 17:51:13 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 17:51:19 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 17:51:19 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started POST "/auth/register/" for ::1 at 2022-07-04 17:51:23 +0300
+Processing by AuthenticationController#register as HTML
+  Parameters: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"12345", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"12345"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.58ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 1.8ms | Allocations: 594)
+
+
+Started POST "/auth/register/" for ::1 at 2022-07-04 17:51:51 +0300
+  
+SyntaxError (/Users/amir/Documents/stake-gate/app/controllers/authentication_controller.rb:2: syntax error, unexpected '\n', expecting =>
+...uest, except: :login, :register
+...                               ^
+):
+  
+app/controllers/authentication_controller.rb:2: syntax error, unexpected '\n', expecting =>
+app/controllers/authentication_controller.rb:2: syntax error, unexpected '\n', expecting =>
+Started POST "/auth/register/" for ::1 at 2022-07-04 17:52:39 +0300
+Processing by AuthenticationController#register as HTML
+  Parameters: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"12345", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"12345"}}
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x0000000106441720>, params: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"12345", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"12345"}} }[0m
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x0000000106441720>, params: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"12345", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"12345"}} }[0m
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x0000000106441720>, params: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"12345", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"12345"}} }[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."referral_code" = $1 LIMIT $2[0m  [["referral_code", "12345"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:22:in `register'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 422 Unprocessable Entity in 321ms (Views: 0.4ms | ActiveRecord: 21.0ms | Allocations: 9023)
+
+
+Started POST "/auth/register/" for ::1 at 2022-07-04 17:52:55 +0300
+Processing by AuthenticationController#register as HTML
+  Parameters: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}}
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x0000000107814b30>, params: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}} }[0m
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x0000000107814b30>, params: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}} }[0m
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x0000000107814b30>, params: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}} }[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."referral_code" = $1 LIMIT $2[0m  [["referral_code", ""], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:22:in `register'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 422 Unprocessable Entity in 274ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1233)
+
+
+Started POST "/auth/register/" for ::1 at 2022-07-04 17:54:38 +0300
+Processing by AuthenticationController#register as HTML
+  Parameters: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}}
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x0000000107a9fa30>, params: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}} }[0m
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x0000000107a9fa30>, params: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}} }[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ (byebug):1:in `register'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "six@gmail.com"], ["LIMIT", 1]]
+  ↳ (byebug):1:in `register'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."referral_code" = $1 LIMIT $2[0m  [["referral_code", "16fb4b"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `generate_referral_code'
+  [1m[36mUser Create (4.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "password_digest", "created_at", "updated_at", "referrer_id", "referral_code") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", nil], ["username", nil], ["email", "six@gmail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2022-07-04 14:55:47.642515"], ["updated_at", "2022-07-04 14:55:47.642515"], ["referrer_id", nil], ["referral_code", "16fb4b"]]
+  ↳ (byebug):1:in `register'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ (byebug):1:in `register'
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x0000000107a9fa30>, params: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}} }[0m
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x0000000107a9fa30>, params: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}} }[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."referral_code" = $1 LIMIT $2[0m  [["referral_code", ""], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:22:in `register'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.1ms)
+Completed 422 Unprocessable Entity in 86429ms (Views: 14.7ms | ActiveRecord: 22.6ms | Allocations: 321030)
+
+
+Started POST "/auth/register/" for ::1 at 2022-07-04 17:56:38 +0300
+Processing by AuthenticationController#register as HTML
+  Parameters: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}}
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x000000010764fc50>, params: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}} }[0m
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x000000010764fc50>, params: {"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"six@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "six@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 422 Unprocessable Entity in 261ms (Views: 0.3ms | ActiveRecord: 7.8ms | Allocations: 9144)
+
+
+Started POST "/auth/register/" for ::1 at 2022-07-04 17:57:47 +0300
+Processing by AuthenticationController#register as HTML
+  Parameters: {"email"=>"seven@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "authentication"=>{"email"=>"seven@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}}
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x00000001079053f0>, params: {"email"=>"seven@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"seven@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}} }[0m
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x00000001079053f0>, params: {"email"=>"seven@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>"", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"seven@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"r7gp", "referral_code"=>""}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "seven@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."referral_code" = $1 LIMIT $2[0m  [["referral_code", "42d379"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `generate_referral_code'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "password_digest", "created_at", "updated_at", "referrer_id", "referral_code") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", nil], ["username", nil], ["email", "seven@gmail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2022-07-04 14:57:48.074294"], ["updated_at", "2022-07-04 14:57:48.074294"], ["referrer_id", nil], ["referral_code", "42d379"]]
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."referrer_id" = $1[0m  [["referrer_id", 8]]
+[active_model_serializers]   ↳ app/controllers/authentication_controller.rb:30:in `register'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.64ms)
+Completed 201 Created in 287ms (Views: 10.8ms | ActiveRecord: 3.1ms | Allocations: 8758)
+
+
+Started GET "/exchanges/" for ::1 at 2022-07-04 17:57:48 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 17:57:48 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 17:57:55 +0300
+Processing by ProfilesController#transactions as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 489)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 17:57:55 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 17:57:55 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 17:57:57 +0300
+Processing by ProfilesController#transactions as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 206)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 17:57:57 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 17:57:57 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 17:57:58 +0300
+Processing by ProfilesController#transactions as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 17:57:58 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 17:57:58 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 17:58:06 +0300
+Processing by ProfilesController#transactions as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 17:58:06 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 17:58:06 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 17:58:33 +0300
+Processing by ProfilesController#transactions as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 587)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 17:58:33 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 17:58:33 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started GET "/exchanges/" for ::1 at 2022-07-04 18:00:40 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 18:00:40 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started POST "/auth/register/" for ::1 at 2022-07-04 18:00:58 +0300
+Processing by AuthenticationController#register as HTML
+  Parameters: {"email"=>"eight@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"j5ef", "authentication"=>{"email"=>"eight@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"j5ef"}}
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x0000000107a7c148>, params: {"email"=>"eight@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"j5ef", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"eight@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"j5ef"}} }[0m
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x0000000107a7c148>, params: {"email"=>"eight@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"j5ef", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"eight@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"j5ef"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "eight@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."referral_code" = $1 LIMIT $2[0m  [["referral_code", "f74ab9"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `generate_referral_code'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "password_digest", "created_at", "updated_at", "referrer_id", "referral_code") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", nil], ["username", nil], ["email", "eight@gmail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2022-07-04 15:00:59.213051"], ["updated_at", "2022-07-04 15:00:59.213051"], ["referrer_id", nil], ["referral_code", "f74ab9"]]
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+Completed 500 Internal Server Error in 300ms (ActiveRecord: 14.8ms | Allocations: 13500)
+
+
+  
+NoMethodError (undefined method `token=' for #<User id: 9, name: nil, username: nil, email: "eight@gmail.com", password_digest: [FILTERED], created_at: "2022-07-04 15:00:59.213051000 +0000", updated_at: "2022-07-04 15:00:59.213051000 +0000", referrer_id: nil, referral_code: "f74ab9">):
+  
+app/controllers/authentication_controller.rb:30:in `register'
+Started POST "/auth/register/" for ::1 at 2022-07-04 18:02:28 +0300
+Processing by AuthenticationController#register as HTML
+  Parameters: {"email"=>"nine@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"j5ef", "authentication"=>{"email"=>"nine@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"j5ef"}}
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x000000011005c7b8>, params: {"email"=>"nine@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"j5ef", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"nine@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"j5ef"}} }[0m
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x000000011005c7b8>, params: {"email"=>"nine@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"j5ef", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"nine@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"j5ef"}} }[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "nine@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."referral_code" = $1 LIMIT $2[0m  [["referral_code", "fa9952"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `generate_referral_code'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "password_digest", "created_at", "updated_at", "referrer_id", "referral_code") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", nil], ["username", nil], ["email", "nine@gmail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2022-07-04 15:02:28.753808"], ["updated_at", "2022-07-04 15:02:28.753808"], ["referrer_id", nil], ["referral_code", "fa9952"]]
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 259ms (Views: 0.4ms | ActiveRecord: 9.2ms | Allocations: 9218)
+
+
+Started GET "/exchanges/" for ::1 at 2022-07-04 18:02:28 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 18:02:28 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 18:02:54 +0300
+Processing by ProfilesController#transactions as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUserTransaction Count (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_transactions" WHERE "user_transactions"."user_id" = $1[0m  [["user_id", 10]]
+  ↳ app/controllers/profiles_controller.rb:13:in `transactions'
+[active_model_serializers]   [1m[36mUserTransaction Load (0.1ms)[0m  [1m[34mSELECT "user_transactions".* FROM "user_transactions" WHERE "user_transactions"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 10], ["LIMIT", 10], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:16:in `transactions'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.65ms)
+Completed 200 OK in 21ms (Views: 0.8ms | ActiveRecord: 6.9ms | Allocations: 10120)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 18:02:58 +0300
+Started GET "/exchanges/" for ::1 at 2022-07-04 18:02:58 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+Started POST "/auth/register/" for ::1 at 2022-07-04 18:03:26 +0300
+Processing by AuthenticationController#register as HTML
+  Parameters: {"email"=>"ten@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"ruym", "referral_code"=>"afc6ed", "authentication"=>{"email"=>"ten@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"ruym", "referral_code"=>"afc6ed"}}
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x000000010793d020>, params: {"email"=>"ten@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"ruym", "referral_code"=>"afc6ed", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"ten@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"ruym", "referral_code"=>"afc6ed"}} }[0m
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x000000010793d020>, params: {"email"=>"ten@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"ruym", "referral_code"=>"afc6ed", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"ten@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"ruym", "referral_code"=>"afc6ed"}} }[0m
+[31mUnpermitted parameters: :confirmPassword, :captcha, :authentication. Context: { controller: AuthenticationController, action: register, request: #<ActionDispatch::Request:0x000000010793d020>, params: {"email"=>"ten@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"ruym", "referral_code"=>"afc6ed", "controller"=>"authentication", "action"=>"register", "authentication"=>{"email"=>"ten@gmail.com", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "captcha"=>"ruym", "referral_code"=>"afc6ed"}} }[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."referral_code" = $1 LIMIT $2[0m  [["referral_code", "afc6ed"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:21:in `register'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ten@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."referral_code" = $1 LIMIT $2[0m  [["referral_code", "3ab167"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:17:in `generate_referral_code'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "password_digest", "created_at", "updated_at", "referrer_id", "referral_code") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", nil], ["username", nil], ["email", "ten@gmail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2022-07-04 15:03:27.015740"], ["updated_at", "2022-07-04 15:03:27.015740"], ["referrer_id", 4], ["referral_code", "3ab167"]]
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/authentication_controller.rb:29:in `register'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.03ms)
+Completed 200 OK in 271ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 5549)
+
+
+Started GET "/exchanges/" for ::1 at 2022-07-04 18:03:27 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 18:03:27 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/profile/transactions" for ::1 at 2022-07-04 18:03:28 +0300
+Processing by ProfilesController#transactions as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUserTransaction Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_transactions" WHERE "user_transactions"."user_id" = $1[0m  [["user_id", 11]]
+  ↳ app/controllers/profiles_controller.rb:13:in `transactions'
+[active_model_serializers]   [1m[36mUserTransaction Load (0.2ms)[0m  [1m[34mSELECT "user_transactions".* FROM "user_transactions" WHERE "user_transactions"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 11], ["LIMIT", 10], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:16:in `transactions'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.39ms)
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 0.7ms | Allocations: 2475)
+
+
