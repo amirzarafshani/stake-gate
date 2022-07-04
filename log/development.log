@@ -905,3 +905,1645 @@ Processing by AuthenticationController#login as */*
 Completed 200 OK in 276ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 706)
 
 
+Started POST "/auth/login" for ::1 at 2022-07-03 12:01:16 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"admin@admin.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"admin@admin.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 265ms (Views: 0.1ms | ActiveRecord: 8.9ms | Allocations: 10561)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePlans (20220703091006)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.2ms)[0m  [1m[35mCREATE TABLE "plans" ("id" bigserial primary key, "days" integer, "profit" integer, "penalty" integer, "plan_type" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220703091006"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserTransactions (20220703091055)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "user_transactions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "plan_id" bigint NOT NULL, "amount" decimal, "action" integer, "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e0527492c6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_4e8d2b028b"
+FOREIGN KEY ("plan_id")
+  REFERENCES "plans" ("id")
+)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_user_id" ON "user_transactions" ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_plan_id" ON "user_transactions" ("plan_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220703091055"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/admin/plans" for ::1 at 2022-07-03 12:13:50 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Admin
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+Started GET "/admin/plans" for ::1 at 2022-07-03 12:15:15 +0300
+  
+ActionController::RoutingError (uninitialized constant Admin
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+Started GET "/admin/plans" for ::1 at 2022-07-03 12:15:27 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Admin
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+Started GET "/admin/plan" for ::1 at 2022-07-03 12:17:00 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/plan"):
+  
+Started GET "/admin/plans" for ::1 at 2022-07-03 12:18:08 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Admin
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+Started GET "/admin/plans" for ::1 at 2022-07-03 13:06:12 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::PlansController#index as */*
+  Parameters: {"email"=>"admin@admin.com", "password"=>"[FILTERED]", "plan"=>{}}
+  [1m[36mPlan Load (4.6ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 12ms (Views: 5.2ms | ActiveRecord: 6.5ms | Allocations: 5023)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (32.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_development"[0m
+  [1m[35m (17.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_test"[0m
+  [1m[35m (123.8ms)[0m  [1m[35mCREATE DATABASE "stake_gate_development" ENCODING = 'unicode'[0m
+  [1m[35m (48.4ms)[0m  [1m[35mCREATE DATABASE "stake_gate_test" ENCODING = 'unicode'[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20220630091749)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220630091749"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlans (20220703091006)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "plans" ("id" bigserial primary key, "days" integer, "profit" integer, "penalty" integer, "plan_type" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220703091006"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserTransactions (20220703091055)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "user_transactions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "plan_id" bigint NOT NULL, "amount" decimal, "action" integer, "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e0527492c6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_4e8d2b028b"
+FOREIGN KEY ("plan_id")
+  REFERENCES "plans" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_user_id" ON "user_transactions" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_plan_id" ON "user_transactions" ("plan_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220703091055"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-03 12:38:44.590823"], ["updated_at", "2022-07-03 12:38:44.590823"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (30.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_development"[0m
+  [1m[35m (17.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_test"[0m
+  [1m[35m (126.1ms)[0m  [1m[35mCREATE DATABASE "stake_gate_development" ENCODING = 'unicode'[0m
+  [1m[35m (48.4ms)[0m  [1m[35mCREATE DATABASE "stake_gate_test" ENCODING = 'unicode'[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20220630091749)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220630091749"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlans (20220703091006)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "plans" ("id" bigserial primary key, "days" integer, "profit" integer, "penalty" integer, "plan_type" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220703091006"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserTransactions (20220703091055)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "user_transactions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "plan_id" bigint NOT NULL, "amount" decimal, "action" integer, "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e0527492c6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_4e8d2b028b"
+FOREIGN KEY ("plan_id")
+  REFERENCES "plans" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_user_id" ON "user_transactions" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_plan_id" ON "user_transactions" ("plan_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220703091055"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-03 12:43:11.694808"], ["updated_at", "2022-07-03 12:43:11.694808"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/users" for ::1 at 2022-07-03 15:44:12 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"admin", "username"=>"admin", "email"=>"admin@admin.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"name"=>"admin", "username"=>"admin", "email"=>"admin@admin.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x0000000107ea43d8>, params: {"name"=>"admin", "username"=>"admin", "email"=>"admin@admin.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"name"=>"admin", "username"=>"admin", "email"=>"admin@admin.com"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Create (2.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "admin"], ["username", "admin"], ["email", "admin@admin.com"], ["password_digest", "[FILTERED]"], ["created_at", "2022-07-03 12:44:12.853206"], ["updated_at", "2022-07-03 12:44:12.853206"]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.11ms)
+Completed 201 Created in 257ms (Views: 1.8ms | ActiveRecord: 8.6ms | Allocations: 13032)
+
+
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/auth/login" for ::1 at 2022-07-03 16:49:05 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as HTML
+  Parameters: {"username"=>"admin", "password"=>"[FILTERED]", "authentication"=>{"username"=>"admin", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 19ms (Views: 0.8ms | ActiveRecord: 6.9ms | Allocations: 6899)
+
+
+Started POST "/auth/login" for ::1 at 2022-07-03 16:50:01 +0300
+Processing by AuthenticationController#login as */*
+  Parameters: {"username"=>"admin", "password"=>"[FILTERED]", "authentication"=>{"username"=>"admin", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 401 Unauthorized in 13ms (Views: 1.0ms | ActiveRecord: 0.5ms | Allocations: 1014)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (7.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (7351.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (6959.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (33.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_development"[0m
+  [1m[35m (18.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_test"[0m
+  [1m[35m (116.0ms)[0m  [1m[35mCREATE DATABASE "stake_gate_development" ENCODING = 'unicode'[0m
+  [1m[35m (33.0ms)[0m  [1m[35mCREATE DATABASE "stake_gate_test" ENCODING = 'unicode'[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20220630091749)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220630091749"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlans (20220703091006)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "plans" ("id" bigserial primary key, "days" integer, "profit" integer, "penalty" integer, "plan_type" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220703091006"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserTransactions (20220703091055)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "user_transactions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "plan_id" bigint NOT NULL, "amount" decimal, "action" integer, "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e0527492c6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_4e8d2b028b"
+FOREIGN KEY ("plan_id")
+  REFERENCES "plans" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_user_id" ON "user_transactions" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_plan_id" ON "user_transactions" ("plan_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220703091055"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-03 13:51:00.561566"], ["updated_at", "2022-07-03 13:51:00.561566"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/users" for ::1 at 2022-07-03 16:51:23 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"admin", "username"=>"admin", "email"=>"admin@admin.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user"=>{"name"=>"admin", "username"=>"admin", "email"=>"admin@admin.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x000000010a209e18>, params: {"name"=>"admin", "username"=>"admin", "email"=>"admin@admin.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"name"=>"admin", "username"=>"admin", "email"=>"admin@admin.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Create (3.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "admin"], ["username", "admin"], ["email", "admin@admin.com"], ["password_digest", "[FILTERED]"], ["created_at", "2022-07-03 13:51:23.913392"], ["updated_at", "2022-07-03 13:51:23.913392"]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.11ms)
+Completed 201 Created in 257ms (Views: 1.1ms | ActiveRecord: 8.2ms | Allocations: 12987)
+
+
+Started POST "/auth/login" for ::1 at 2022-07-03 16:51:29 +0300
+Processing by AuthenticationController#login as */*
+  Parameters: {"username"=>"admin", "password"=>"[FILTERED]", "authentication"=>{"username"=>"admin", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 401 Unauthorized in 5ms (Views: 0.7ms | ActiveRecord: 0.5ms | Allocations: 1455)
+
+
+Started POST "/auth/login" for ::1 at 2022-07-03 16:51:39 +0300
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"admin", "password"=>"[FILTERED]", "authentication"=>{"email"=>"admin", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 401 Unauthorized in 6ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 865)
+
+
+Started POST "/auth/login" for ::1 at 2022-07-03 16:51:46 +0300
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"admin@admin.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"admin@admin.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 285ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 2162)
+
+
+Started POST "/auth/login" for ::1 at 2022-07-03 16:53:02 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"admin@admin.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"admin@admin.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 263ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 901)
+
+
+Started GET "/admin/exchanges/" for ::1 at 2022-07-03 16:53:03 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-03 16:53:03 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/admin/inventories/" for ::1 at 2022-07-03 16:53:07 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/inventories"):
+  
+Started GET "/admin/currencies/" for ::1 at 2022-07-03 16:53:07 +0300
+Started GET "/admin/inventories/undefined?page_number=1&page_size=10" for ::1 at 2022-07-03 16:53:07 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/currencies"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/admin/inventories/undefined"):
+  
+Started GET "/admin/revenues/" for ::1 at 2022-07-03 16:53:09 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/revenues"):
+  
+Started GET "/admin/currencies/" for ::1 at 2022-07-03 16:53:10 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/currencies"):
+  
+Started GET "/admin/users/?page_number=1&&page_size=10&&q=" for ::1 at 2022-07-03 16:53:11 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/users"):
+  
+Started POST "/admin/orders/?page_number=1&page_size=10" for ::1 at 2022-07-03 16:53:11 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/admin/orders"):
+  
+Started POST "/admin/requests/?page_number=1&&page_size=10" for ::1 at 2022-07-03 16:53:12 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/admin/requests"):
+  
+Started GET "/admin/tickets/" for ::1 at 2022-07-03 16:53:13 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tickets"):
+  
+Started GET "/admin/inventories/" for ::1 at 2022-07-03 16:53:15 +0300
+Started GET "/admin/currencies/" for ::1 at 2022-07-03 16:53:15 +0300
+Started GET "/admin/inventories/undefined?page_number=1&page_size=10" for ::1 at 2022-07-03 16:53:15 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/inventories"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/admin/currencies"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/admin/inventories/undefined"):
+  
+Started GET "/admin/revenues/" for ::1 at 2022-07-03 16:53:25 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/revenues"):
+  
+Started GET "/admin/currencies/" for ::1 at 2022-07-03 16:53:26 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/currencies"):
+  
+Started GET "/admin/tickets/" for ::1 at 2022-07-03 16:55:39 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tickets"):
+  
+Started GET "/admin/tickets/" for ::1 at 2022-07-03 16:55:58 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tickets"):
+  
+Started GET "/admin/tickets/" for ::1 at 2022-07-03 16:56:27 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tickets"):
+  
+Started GET "/admin/currencies/" for ::1 at 2022-07-03 16:56:32 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/currencies"):
+  
+Started GET "/admin/inventories/" for ::1 at 2022-07-03 16:57:52 +0300
+Started GET "/admin/currencies/" for ::1 at 2022-07-03 16:57:52 +0300
+Started GET "/admin/inventories/undefined?page_number=1&page_size=10" for ::1 at 2022-07-03 16:57:52 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/currencies"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/admin/inventories"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/admin/inventories/undefined"):
+  
+Started GET "/admin/revenues/" for ::1 at 2022-07-03 16:57:56 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/revenues"):
+  
+Started GET "/admin/currencies/" for ::1 at 2022-07-03 16:57:57 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/currencies"):
+  
+Started POST "/admin/orders/?page_number=1&page_size=10" for ::1 at 2022-07-03 16:58:03 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/admin/orders"):
+  
+Started POST "/admin/requests/?page_number=1&&page_size=10" for ::1 at 2022-07-03 16:58:04 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/admin/requests"):
+  
+Started GET "/admin/tickets/" for ::1 at 2022-07-03 16:58:04 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/tickets"):
+  
+Started GET "/admin/revenues/" for ::1 at 2022-07-03 16:58:17 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/revenues"):
+  
+Started GET "/admin/plans/" for ::1 at 2022-07-03 19:49:02 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (1.9ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.48ms)
+Completed 200 OK in 75ms (Views: 68.1ms | ActiveRecord: 27.6ms | Allocations: 5866)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 19:50:44 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (1.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 1.2ms | Allocations: 954)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 19:55:59 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.4ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 19:57:17 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.3ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 19:57:20 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:48:11 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.6ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 29ms (Views: 28.3ms | ActiveRecord: 10.0ms | Allocations: 3820)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:48:17 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+Completed 200 OK in 6ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:48:37 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:49:40 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.6ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 200 OK in 14ms (Views: 11.2ms | ActiveRecord: 0.6ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:49:42 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:50:23 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (18.0ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 38ms (Views: 19.0ms | ActiveRecord: 18.0ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:50:38 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:50:51 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.1ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.2ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:50:52 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:51:51 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.7ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.23ms)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.7ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:52:16 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.7ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.7ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:52:20 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.18ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.4ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:52:57 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (1.5ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 200 OK in 11ms (Views: 6.9ms | ActiveRecord: 1.5ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:53:02 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:53:31 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+Completed 200 OK in 11ms (Views: 7.4ms | ActiveRecord: 0.4ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:53:36 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.03ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:53:38 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:54:08 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.11ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:54:12 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:54:26 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.21ms)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.4ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:54:28 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 836)
+
+
+Started POST "/admin/currencies/" for ::1 at 2022-07-03 21:54:55 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/admin/currencies"):
+  
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:55:39 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.3ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:56:14 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.7ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.7ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:56:49 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.6ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+Completed 200 OK in 16ms (Views: 14.3ms | ActiveRecord: 0.6ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:56:59 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.09ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.4ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:57:04 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:57:10 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.4ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:57:24 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.3ms | Allocations: 836)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:57:28 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.09ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 836)
+
+
+Started POST "/admin/plans/" for ::1 at 2022-07-03 21:57:53 +0300
+Processing by Admin::PlansController#create as JSON
+  Parameters: {"name"=>"Plan One", "days"=>"90", "profit"=>"10", "penalty"=>"8", "plan_type"=>0, "plan"=>{"days"=>"90", "profit"=>"10", "penalty"=>"8", "plan_type"=>0}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mPlan Create (2.7ms)[0m  [1m[32mINSERT INTO "plans" ("days", "profit", "penalty", "plan_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["days", 90], ["profit", 10], ["penalty", 8], ["plan_type", 0], ["created_at", "2022-07-03 18:57:53.680024"], ["updated_at", "2022-07-03 18:57:53.680024"]]
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 18.4ms | Allocations: 7653)
+
+
+  
+NoMethodError (undefined method `plan_url' for #<Admin::PlansController:0x0000000000aa00>
+
+              target.public_send(method, *args)
+                    ^^^^^^^^^^^^):
+  
+app/controllers/admin/plans_controller.rb:21:in `create'
+Started GET "/admin/plans/" for ::1 at 2022-07-03 21:58:28 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+Completed 200 OK in 21ms (Views: 20.4ms | ActiveRecord: 0.3ms | Allocations: 2794)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:00:49 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (15.1ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.86ms)
+Completed 200 OK in 31ms (Views: 14.8ms | ActiveRecord: 15.1ms | Allocations: 1108)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:01:32 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.9ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.93ms)
+Completed 200 OK in 11ms (Views: 8.5ms | ActiveRecord: 0.9ms | Allocations: 986)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:01:45 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.9ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.93ms)
+Completed 200 OK in 18ms (Views: 2.4ms | ActiveRecord: 1.1ms | Allocations: 1034)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:03:29 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.41ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 7.0ms | Allocations: 12050)
+
+
+  
+NoMethodError (undefined method `name' for #<Plan id: 1, days: 90, profit: 10, penalty: 8, plan_type: "fixed", created_at: "2022-07-03 18:57:53.680024000 +0000", updated_at: "2022-07-03 18:57:53.680024000 +0000">):
+  
+app/controllers/admin/plans_controller.rb:8:in `index'
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:03:51 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.5ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.94ms)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 3.3ms | Allocations: 18301)
+
+
+  
+NoMethodError (undefined method `name' for #<Plan id: 1, days: 90, profit: 10, penalty: 8, plan_type: "fixed", created_at: "2022-07-03 18:57:53.680024000 +0000", updated_at: "2022-07-03 18:57:53.680024000 +0000">):
+  
+app/controllers/admin/plans_controller.rb:8:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNameToPlans (20220703190737)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.7ms)[0m  [1m[35mALTER TABLE "plans" ADD "name" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220703190737"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:08:13 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.8ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.43ms)
+Completed 200 OK in 19ms (Views: 6.9ms | ActiveRecord: 4.1ms | Allocations: 11148)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:08:14 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.38ms)
+Completed 200 OK in 6ms (Views: 1.1ms | ActiveRecord: 0.6ms | Allocations: 1828)
+
+
+Started PUT "/admin/plans/1" for ::1 at 2022-07-03 22:08:21 +0300
+Processing by Admin::PlansController#update as JSON
+  Parameters: {"id"=>"1", "name"=>"Plan One", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "plan"=>{"id"=>"1", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "name"=>"Plan One"}}
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[31mUnpermitted parameters: :id, :name. Context: { controller: Admin::PlansController, action: update, request: #<ActionDispatch::Request:0x000000010a87f180>, params: {"id"=>"1", "name"=>"Plan One", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "controller"=>"admin/plans", "action"=>"update", "plan"=>{"id"=>"1", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "name"=>"Plan One"}} }[0m
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 1580)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:08:21 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.3ms | Allocations: 1005)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:08:25 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 1010)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:08:40 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.98ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms | Allocations: 796)
+
+
+Started PUT "/admin/plans/1" for ::1 at 2022-07-03 22:08:49 +0300
+Processing by Admin::PlansController#update as JSON
+  Parameters: {"id"=>"1", "name"=>"Plan One", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "plan"=>{"id"=>"1", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "name"=>"Plan One"}}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[31mUnpermitted parameters: :id, :name. Context: { controller: Admin::PlansController, action: update, request: #<ActionDispatch::Request:0x0000000109be1608>, params: {"id"=>"1", "name"=>"Plan One", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "controller"=>"admin/plans", "action"=>"update", "plan"=>{"id"=>"1", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "name"=>"Plan One"}} }[0m
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.3ms | Allocations: 1089)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:08:49 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 996)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:11:44 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.7ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 200 OK in 8ms (Views: 3.0ms | ActiveRecord: 3.7ms | Allocations: 4799)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:11:46 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 1103)
+
+
+Started PUT "/admin/plans/1" for ::1 at 2022-07-03 22:11:50 +0300
+Processing by Admin::PlansController#update as JSON
+  Parameters: {"id"=>"1", "name"=>"Plan One", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "plan"=>{"id"=>"1", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "name"=>"Plan One"}}
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[31mUnpermitted parameter: :id. Context: { controller: Admin::PlansController, action: update, request: #<ActionDispatch::Request:0x000000010a8fe980>, params: {"id"=>"1", "name"=>"Plan One", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "controller"=>"admin/plans", "action"=>"update", "plan"=>{"id"=>"1", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "name"=>"Plan One"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+  [1m[36mPlan Update (2.2ms)[0m  [1m[33mUPDATE "plans" SET "updated_at" = $1, "name" = $2 WHERE "plans"."id" = $3[0m  [["updated_at", "2022-07-03 19:11:50.681115"], ["name", "Plan One"], ["id", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 12ms (Views: 0.9ms | ActiveRecord: 4.5ms | Allocations: 3083)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:11:50 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 1005)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:11:53 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.49ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:12:35 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (15.33ms)
+Completed 200 OK in 27ms (Views: 24.6ms | ActiveRecord: 0.4ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:12:37 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 785)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:12:41 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.36ms)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:12:45 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.36ms)
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 785)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:12:59 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (4.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.48ms)
+Completed 200 OK in 42ms (Views: 24.2ms | ActiveRecord: 4.3ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:13:34 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (7.5ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.66ms)
+Completed 200 OK in 21ms (Views: 13.0ms | ActiveRecord: 7.5ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:14:11 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (7.1ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.42ms)
+Completed 200 OK in 44ms (Views: 29.4ms | ActiveRecord: 7.1ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:14:11 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:14:18 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.5ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.49ms)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.5ms | Allocations: 785)
+
+
+Started PUT "/admin/plans/1" for ::1 at 2022-07-03 22:14:23 +0300
+Processing by Admin::PlansController#update as JSON
+  Parameters: {"id"=>"1", "name"=>"Plan One", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "plan"=>{"id"=>"1", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "name"=>"Plan One"}}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[31mUnpermitted parameter: :id. Context: { controller: Admin::PlansController, action: update, request: #<ActionDispatch::Request:0x000000010ae45e48>, params: {"id"=>"1", "name"=>"Plan One", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "controller"=>"admin/plans", "action"=>"update", "plan"=>{"id"=>"1", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "name"=>"Plan One"}} }[0m
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.38ms)
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 0.3ms | Allocations: 1103)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:14:23 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.43ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 1002)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:14:26 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 785)
+
+
+Started PUT "/admin/plans/1" for ::1 at 2022-07-03 22:14:30 +0300
+Processing by Admin::PlansController#update as JSON
+  Parameters: {"id"=>"1", "name"=>"Plan One", "days"=>"902", "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "plan"=>{"id"=>"1", "days"=>"902", "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "name"=>"Plan One"}}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[31mUnpermitted parameter: :id. Context: { controller: Admin::PlansController, action: update, request: #<ActionDispatch::Request:0x000000010aecea90>, params: {"id"=>"1", "name"=>"Plan One", "days"=>"902", "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "controller"=>"admin/plans", "action"=>"update", "plan"=>{"id"=>"1", "days"=>"902", "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "name"=>"Plan One"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+  [1m[36mPlan Update (1.1ms)[0m  [1m[33mUPDATE "plans" SET "days" = $1, "updated_at" = $2 WHERE "plans"."id" = $3[0m  [["days", 902], ["updated_at", "2022-07-03 19:14:30.738616"], ["id", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 200 OK in 12ms (Views: 0.9ms | ActiveRecord: 2.5ms | Allocations: 2723)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:14:30 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.81ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.3ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:14:32 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 785)
+
+
+Started PUT "/admin/plans/1" for ::1 at 2022-07-03 22:14:35 +0300
+Processing by Admin::PlansController#update as JSON
+  Parameters: {"id"=>"1", "name"=>"Plan One", "days"=>"90", "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "plan"=>{"id"=>"1", "days"=>"90", "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "name"=>"Plan One"}}
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[31mUnpermitted parameter: :id. Context: { controller: Admin::PlansController, action: update, request: #<ActionDispatch::Request:0x000000010af77820>, params: {"id"=>"1", "name"=>"Plan One", "days"=>"90", "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "controller"=>"admin/plans", "action"=>"update", "plan"=>{"id"=>"1", "days"=>"90", "profit"=>10, "penalty"=>8, "plan_type"=>"fixed", "name"=>"Plan One"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+  [1m[36mPlan Update (0.3ms)[0m  [1m[33mUPDATE "plans" SET "days" = $1, "updated_at" = $2 WHERE "plans"."id" = $3[0m  [["days", 90], ["updated_at", "2022-07-03 19:14:35.592916"], ["id", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 8ms (Views: 0.8ms | ActiveRecord: 1.3ms | Allocations: 2721)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:14:35 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.3ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:14:53 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.8ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.52ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.8ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:15:44 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.81ms)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.4ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:15:48 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.52ms)
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.3ms | Allocations: 785)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:16:12 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.5ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.35ms)
+Completed 200 OK in 34ms (Views: 29.0ms | ActiveRecord: 0.5ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:16:16 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 785)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:16:18 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.46ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 785)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:16:21 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.9ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.32ms)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.9ms | Allocations: 785)
+
+
+Started PUT "/admin/plans/1" for ::1 at 2022-07-03 22:16:25 +0300
+Processing by Admin::PlansController#update as JSON
+  Parameters: {"id"=>"1", "name"=>"Plan One", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>1, "plan"=>{"id"=>"1", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>1, "name"=>"Plan One"}}
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[31mUnpermitted parameter: :id. Context: { controller: Admin::PlansController, action: update, request: #<ActionDispatch::Request:0x000000010b326868>, params: {"id"=>"1", "name"=>"Plan One", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>1, "controller"=>"admin/plans", "action"=>"update", "plan"=>{"id"=>"1", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>1, "name"=>"Plan One"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+  [1m[36mPlan Update (0.6ms)[0m  [1m[33mUPDATE "plans" SET "plan_type" = $1, "updated_at" = $2 WHERE "plans"."id" = $3[0m  [["plan_type", 1], ["updated_at", "2022-07-03 19:16:26.008696"], ["id", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.46ms)
+Completed 200 OK in 10ms (Views: 1.1ms | ActiveRecord: 2.0ms | Allocations: 2726)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:16:26 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 1000)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-03 22:16:27 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.5ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.5ms | Allocations: 785)
+
+
+Started PUT "/admin/plans/1" for ::1 at 2022-07-03 22:16:32 +0300
+Processing by Admin::PlansController#update as JSON
+  Parameters: {"id"=>"1", "name"=>"Plan One", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>0, "plan"=>{"id"=>"1", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>0, "name"=>"Plan One"}}
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[31mUnpermitted parameter: :id. Context: { controller: Admin::PlansController, action: update, request: #<ActionDispatch::Request:0x000000010b3cf5a8>, params: {"id"=>"1", "name"=>"Plan One", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>0, "controller"=>"admin/plans", "action"=>"update", "plan"=>{"id"=>"1", "days"=>90, "profit"=>10, "penalty"=>8, "plan_type"=>0, "name"=>"Plan One"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+  [1m[36mPlan Update (0.5ms)[0m  [1m[33mUPDATE "plans" SET "plan_type" = $1, "updated_at" = $2 WHERE "plans"."id" = $3[0m  [["plan_type", 0], ["updated_at", "2022-07-03 19:16:32.243026"], ["id", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:29:in `update'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 200 OK in 10ms (Views: 0.9ms | ActiveRecord: 1.5ms | Allocations: 2723)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-03 22:16:32 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.41ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 1000)
+
+
+Started POST "/auth/login" for ::1 at 2022-07-04 10:35:00 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as HTML
+  Parameters: {"username"=>"admin@admin.com", "password"=>"[FILTERED]", "authentication"=>{"username"=>"admin@admin.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.36ms)
+Completed 401 Unauthorized in 37ms (Views: 19.1ms | ActiveRecord: 6.6ms | Allocations: 6898)
+
+
+Started POST "/auth/login" for ::1 at 2022-07-04 10:35:37 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"username"=>"admin@admin.com", "password"=>"[FILTERED]", "authentication"=>{"username"=>"admin@admin.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 401 Unauthorized in 8ms (Views: 0.8ms | ActiveRecord: 0.6ms | Allocations: 1008)
+
+
+Started POST "/auth/login" for ::1 at 2022-07-04 10:35:46 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"username"=>"admin@admin.com", "password"=>"[FILTERED]", "authentication"=>{"username"=>"admin@admin.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 401 Unauthorized in 3ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 822)
+
+
+Started POST "/auth/login" for ::1 at 2022-07-04 10:36:28 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"username"=>"admin@admin.com", "password"=>"[FILTERED]", "authentication"=>{"username"=>"admin@admin.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 401 Unauthorized in 4ms (Views: 1.4ms | ActiveRecord: 0.4ms | Allocations: 822)
+
+
+Started POST "/auth/login" for ::1 at 2022-07-04 10:36:36 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"username"=>"admin", "password"=>"[FILTERED]", "authentication"=>{"username"=>"admin", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 401 Unauthorized in 4ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 822)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/auth/login" for ::1 at 2022-07-04 10:38:02 +0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"admin@admin.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"admin@admin.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 299ms (Views: 0.4ms | ActiveRecord: 4.3ms | Allocations: 6210)
+
+
+Started GET "/ws/system/" for ::1 at 2022-07-04 10:38:03 +0300
+Started GET "/admin/exchanges/" for ::1 at 2022-07-04 10:38:03 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/admin/exchanges"):
+  
+Started GET "/admin/plans/" for ::1 at 2022-07-04 10:38:06 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.7ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.65ms)
+Completed 200 OK in 23ms (Views: 16.6ms | ActiveRecord: 3.7ms | Allocations: 6735)
+
+
+Started GET "/admin/plans/1" for ::1 at 2022-07-04 10:38:09 +0300
+Processing by Admin::PlansController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mPlan Load (0.5ms)[0m  [1m[34mSELECT "plans".* FROM "plans" WHERE "plans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/plans_controller.rb:44:in `set_plan'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.41ms)
+Completed 200 OK in 15ms (Views: 1.1ms | ActiveRecord: 0.5ms | Allocations: 1154)
+
+
+Started POST "/admin/plans/" for ::1 at 2022-07-04 10:38:31 +0300
+Processing by Admin::PlansController#create as JSON
+  Parameters: {"name"=>"Plan Two", "days"=>"60", "profit"=>"8", "penalty"=>"6", "plan_type"=>0, "plan"=>{"days"=>"60", "profit"=>"8", "penalty"=>"6", "plan_type"=>0, "name"=>"Plan Two"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mPlan Create (1.1ms)[0m  [1m[32mINSERT INTO "plans" ("days", "profit", "penalty", "plan_type", "created_at", "updated_at", "name") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["days", 60], ["profit", 8], ["penalty", 6], ["plan_type", 0], ["created_at", "2022-07-04 07:38:31.115111"], ["updated_at", "2022-07-04 07:38:31.115111"], ["name", "Plan Two"]]
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.8ms | Allocations: 5632)
+
+
+  
+NoMethodError (undefined method `plan_url' for #<Admin::PlansController:0x00000000009ce0>
+
+              target.public_send(method, *args)
+                    ^^^^^^^^^^^^):
+  
+app/controllers/admin/plans_controller.rb:21:in `create'
+Started GET "/admin/plans/" for ::1 at 2022-07-04 10:42:57 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (1.0ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.32ms)
+Completed 200 OK in 10ms (Views: 3.4ms | ActiveRecord: 4.9ms | Allocations: 4895)
+
+
+Started POST "/admin/plans/" for ::1 at 2022-07-04 10:43:15 +0300
+Processing by Admin::PlansController#create as JSON
+  Parameters: {"name"=>"Plan Three", "days"=>"30", "profit"=>"6", "penalty"=>"4", "plan_type"=>0, "plan"=>{"days"=>"30", "profit"=>"6", "penalty"=>"4", "plan_type"=>0, "name"=>"Plan Three"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mPlan Create (0.4ms)[0m  [1m[32mINSERT INTO "plans" ("days", "profit", "penalty", "plan_type", "created_at", "updated_at", "name") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["days", 30], ["profit", 6], ["penalty", 4], ["plan_type", 0], ["created_at", "2022-07-04 07:43:15.766911"], ["updated_at", "2022-07-04 07:43:15.766911"], ["name", "Plan Three"]]
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 201 Created in 6ms (Views: 0.9ms | ActiveRecord: 0.8ms | Allocations: 2404)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-04 10:43:15 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.3ms | Allocations: 1318)
+
+
+Started POST "/admin/plans/" for ::1 at 2022-07-04 10:43:46 +0300
+Processing by Admin::PlansController#create as JSON
+  Parameters: {"name"=>"Flexible Plan", "days"=>"0", "profit"=>"5", "penalty"=>"0", "plan_type"=>1, "plan"=>{"days"=>"0", "profit"=>"5", "penalty"=>"0", "plan_type"=>1, "name"=>"Flexible Plan"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mPlan Create (0.4ms)[0m  [1m[32mINSERT INTO "plans" ("days", "profit", "penalty", "plan_type", "created_at", "updated_at", "name") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["days", 0], ["profit", 5], ["penalty", 0], ["plan_type", 1], ["created_at", "2022-07-04 07:43:46.355426"], ["updated_at", "2022-07-04 07:43:46.355426"], ["name", "Flexible Plan"]]
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/plans_controller.rb:20:in `create'
+[active_model_serializers] Rendered PlanSerializer with ActiveModelSerializers::Adapter::Attributes (0.46ms)
+Completed 201 Created in 7ms (Views: 1.2ms | ActiveRecord: 0.7ms | Allocations: 2122)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-04 10:43:46 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (0.2ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.15ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms | Allocations: 1430)
+
+
+Started GET "/admin/plans/" for ::1 at 2022-07-04 10:48:58 +0300
+Processing by Admin::PlansController#index as JSON
+  [1m[36mPlan Load (11.3ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.85ms)
+Completed 200 OK in 47ms (Views: 34.7ms | ActiveRecord: 11.3ms | Allocations: 1430)
+
+
+Started GET "/exchanges/" for ::1 at 2022-07-04 10:49:16 +0300
+Started GET "/ws/system/" for ::1 at 2022-07-04 10:49:16 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/exchanges"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started GET "/ws/system/" for ::1 at 2022-07-04 10:49:38 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/ws/system"):
+  
+Started POST "/token/" for ::1 at 2022-07-04 10:51:41 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/token"):
+  
+Started GET "/admin/plans" for ::1 at 2022-07-04 11:10:55 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::PlansController#index as */*
+  Parameters: {"email"=>"admin@admin.com", "password"=>"[FILTERED]", "plan"=>{"email"=>"admin@admin.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 4248)
+
+
+  
+NameError (uninitialized constant Admin::PlansController::Plan
+
+    @plans = Plan.all
+             ^^^^):
+  
+app/controllers/admin/plans_controller.rb:6:in `index'
+Started GET "/admin/plans" for ::1 at 2022-07-04 11:17:37 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20220704081546_create_plans.rb
+
+
+):
+  
+activerecord (7.0.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePlans (20220704081546)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "plans" ("id" bigserial primary key, "days" integer, "name" character varying, "profit" integer, "penalty" integer, "plan_type" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4345702173018795330)[0m
+Started GET "/admin/plans" for ::1 at 2022-07-04 11:18:22 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20220704081546_create_plans.rb
+
+
+):
+  
+activerecord (7.0.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (4.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (7844.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (44.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_development"[0m
+  [1m[35m (21.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_test"[0m
+  [1m[35m (114.5ms)[0m  [1m[35mCREATE DATABASE "stake_gate_development" ENCODING = 'unicode'[0m
+  [1m[35m (33.5ms)[0m  [1m[35mCREATE DATABASE "stake_gate_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "plans" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "plans" ("id" bigserial primary key, "days" integer, "profit" integer, "penalty" integer, "plan_type" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "name" character varying)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "user_transactions" CASCADE[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "user_transactions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "plan_id" bigint NOT NULL, "amount" decimal, "action" integer, "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_plan_id" ON "user_transactions" ("plan_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_user_id" ON "user_transactions" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "user_transactions" ADD CONSTRAINT "fk_rails_4e8d2b028b"
+FOREIGN KEY ("plan_id")
+  REFERENCES "plans" ("id")
+[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "user_transactions" ADD CONSTRAINT "fk_rails_e0527492c6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220703190737)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220630091749);
+
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-04 08:18:55.378759"], ["updated_at", "2022-07-04 08:18:55.378759"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "245c15db7470b12484e46976f509fa8d1f9db138"], ["created_at", "2022-07-04 08:18:55.382128"], ["updated_at", "2022-07-04 08:18:55.382128"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "plans" CASCADE[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "plans" ("id" bigserial primary key, "days" integer, "profit" integer, "penalty" integer, "plan_type" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "name" character varying)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "user_transactions" CASCADE[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "user_transactions" ("id" bigserial primary key, "user_id" bigint NOT NULL, "plan_id" bigint NOT NULL, "amount" decimal, "action" integer, "status" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_plan_id" ON "user_transactions" ("plan_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_user_transactions_on_user_id" ON "user_transactions" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "user_transactions" ADD CONSTRAINT "fk_rails_4e8d2b028b"
+FOREIGN KEY ("plan_id")
+  REFERENCES "plans" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "user_transactions" ADD CONSTRAINT "fk_rails_e0527492c6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220703190737)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220630091749);
+
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-04 08:18:55.414611"], ["updated_at", "2022-07-04 08:18:55.414611"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2022-07-04 08:18:55.416529"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "245c15db7470b12484e46976f509fa8d1f9db138"], ["created_at", "2022-07-04 08:18:55.418256"], ["updated_at", "2022-07-04 08:18:55.418256"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePlans (20220704081546)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "plans" ("id" bigserial primary key, "days" integer, "name" character varying, "profit" integer, "penalty" integer, "plan_type" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (37.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_development"[0m
+  [1m[35m (17.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "stake_gate_test"[0m
+  [1m[35m (32.8ms)[0m  [1m[35mCREATE DATABASE "stake_gate_development" ENCODING = 'unicode'[0m
+  [1m[35m (25.8ms)[0m  [1m[35mCREATE DATABASE "stake_gate_test" ENCODING = 'unicode'[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20220630091749)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220630091749"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlans (20220704081546)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "plans" ("id" bigserial primary key, "days" integer, "name" character varying, "profit" integer, "penalty" integer, "plan_type" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220704081546"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-07-04 08:19:28.079509"], ["updated_at", "2022-07-04 08:19:28.079509"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(4345702173018795330)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/admin/plans" for ::1 at 2022-07-04 11:19:36 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::PlansController#index as */*
+  Parameters: {"email"=>"admin@admin.com", "password"=>"[FILTERED]", "plan"=>{}}
+  [1m[36mPlan Load (4.7ms)[0m  [1m[34mSELECT "plans".* FROM "plans"[0m
+  ↳ app/controllers/admin/plans_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 12ms (Views: 4.5ms | ActiveRecord: 6.1ms | Allocations: 4998)
+
+

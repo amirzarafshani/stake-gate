@@ -37,6 +37,7 @@ gem "bootsnap", require: false
 gem "rack-cors"
 gem 'bcrypt', '~> 3.1', '>= 3.1.18'
 gem 'jwt', '~> 2.4', '>= 2.4.1'
+gem 'active_model_serializers', '~> 0.10.2'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
