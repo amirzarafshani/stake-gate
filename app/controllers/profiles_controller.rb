@@ -10,12 +10,14 @@ class ProfilesController < ApplicationController
     page = params[:page] ? params[:page] : 1
 
     items = current_user.user_transactions.paginate(page: page, per_page: per_page)
-    total_records = items.size
-    total_pages = (total_records.to_f / per_page).ceil
+    total_items = items.size
+    total_pages = (total_items.to_f / per_page).ceil
 
     render json: {
-      items:  items,
-      total_records: total_records,
+      items: items.as_json(
+        include: { plan: { only: [:name, :days]}}
+      ),
+      total_items: total_items,
       total_pages: total_pages
     }, status: :ok
   end

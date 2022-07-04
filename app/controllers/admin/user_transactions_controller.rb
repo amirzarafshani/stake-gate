@@ -3,9 +3,7 @@ class Admin::UserTransactionsController < ApplicationController
 
   # GET /user_transactions
   def index
-    byebug
     @user_transactions = UserTransaction.all
-
     render json: @user_transactions
   end
 
