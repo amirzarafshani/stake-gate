@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :referral_rates
   post '/auth/login', to: 'authentication#login'
   post '/auth/register', to: 'authentication#register'
   get '/profile', to: 'profiles#index'

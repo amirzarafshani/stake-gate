@@ -11,7 +11,9 @@ class UserTransaction < ApplicationRecord
       remaining: remaining,
       release_date: release_date,
       calculated_profit: calculated_profit,
-      calculated_penalty: calculated_penalty
+      calculated_penalty: calculated_penalty,
+      profit_rate: profit_rate,
+      elapsed: elapsed
     )
   end
 
@@ -31,12 +33,18 @@ class UserTransaction < ApplicationRecord
   end
 
   def calculated_profit
-    return unless elapsed
-    (elapsed * plan.profit).fdiv(100)
+    return 0 unless elapsed
+    elapsed * amount.to_f * plan.profit
   end
 
   def calculated_penalty
-    return unless remaining
-    (remaining * plan.penalty).fdiv(100)
+    return 0 unless remaining
+    remaining * amount.to_f * plan.penalty
+  end
+
+  def profit_rate
+    rate = ReferralRate::rate_by_count(user.active_referrals)
+    return plan.profit + rate unless rate.nil?
+    plan.profit
   end
 end

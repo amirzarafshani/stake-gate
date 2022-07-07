@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
 
     render json: {
       items: items.as_json(
-        include: { plan: { only: [:name, :days]}}
+        include: { plan: { only: [:name, :days, :profit, :penalty]}}
       ),
       total_items: total_items,
       total_pages: total_pages

@@ -10,6 +10,15 @@ class User < ApplicationRecord
   has_many :user_transactions, dependent: :destroy
   before_create :generate_referral_code
 
+  def active?
+    return true if user_transactions.count.positive?
+    false
+  end
+
+  def active_referrals
+    referrals.select {|r| r.active? }.count
+  end
+
   private
   def generate_referral_code
     begin
@@ -17,5 +26,4 @@ class User < ApplicationRecord
     end while User.exists?(referral_code: referral_code)
     self.referral_code = referral_code
   end
-
 end

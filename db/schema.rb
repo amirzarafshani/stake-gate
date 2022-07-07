@@ -10,16 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_04_103608) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_05_161102) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "plans", force: :cascade do |t|
     t.integer "days"
     t.string "name"
-    t.integer "profit"
-    t.integer "penalty"
+    t.float "profit"
+    t.float "penalty"
     t.integer "plan_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "min_depost"
+  end
+
+  create_table "referral_rates", force: :cascade do |t|
+    t.integer "referral_count"
+    t.float "profit_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
