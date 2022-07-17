@@ -1,13 +1,29 @@
-class Admin::UsersController < ApplicationController
-  before_action :authorize_request, except: :create
+class Admin::UsersController < AdminController
+  before_action :authorize_request
   before_action :find_user, except: %i[create index]
 
   # GET /users
   def index
     @users = User.all
-    render json: @users.as_json(
-      only: [:id, :email, :referral_code]
-    ), status: :ok
+    if params[:status]
+      @users = @users.where(status: params[:status])
+    end
+
+    per_page = params[:per_page] ? params[:per_page] : 10
+    page = params[:page] ? params[:page] : 1
+
+    items = @users.paginate(page: page, per_page: per_page)
+    total_items = @users.size
+    total_pages = (total_items.to_f / per_page).ceil
+
+    render json: {
+      items: ActiveModelSerializers::SerializableResource.new(
+        items,
+        each_serializer: UserSerializer
+      ),
+      total_items: total_items,
+      total_pages: total_pages
+    }, status: :ok
   end
 
   # GET /users/{username}

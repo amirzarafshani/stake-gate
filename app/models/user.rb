@@ -7,16 +7,18 @@ class User < ApplicationRecord
             if: -> { new_record? || !password.nil? }
   belongs_to :referrer, optional: true, class_name: 'User', foreign_key: :referrer_id
   has_many :referrals, class_name: 'User', foreign_key: :referrer_id
-  has_many :user_transactions, dependent: :destroy
+  has_many :assets, -> { active }, dependent: :destroy
+  has_many :releases, dependent: :destroy
   before_create :generate_referral_code
 
-  def active?
-    return true if user_transactions.count.positive?
+  enum role: [:user, :admin]
+  def is_active?
+    return true if assets.count.positive?
     false
   end
 
   def active_referrals
-    referrals.select {|r| r.active? }.count
+    referrals.select {|r| r.is_active? }.count
   end
 
   private

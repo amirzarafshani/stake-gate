@@ -1,4 +1,5 @@
-class Admin::PlansController < ApplicationController
+class Admin::PlansController < AdminController
+  before_action :authorize_request
   before_action :set_plan, only: %i[ show update destroy ]
 
   # GET /plans

@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_05_161102) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_17_135728) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assets", force: :cascade do |t|
+    t.decimal "amount"
+    t.integer "status"
+    t.string "transaction_id"
+    t.bigint "plan_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_assets_on_plan_id"
+    t.index ["user_id"], name: "index_assets_on_user_id"
+  end
 
   create_table "plans", force: :cascade do |t|
     t.integer "days"
@@ -32,16 +44,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_05_161102) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_transactions", force: :cascade do |t|
+  create_table "releases", force: :cascade do |t|
     t.decimal "amount"
-    t.integer "action"
+    t.decimal "current_amount"
+    t.decimal "penalty"
+    t.decimal "profit"
     t.integer "status"
-    t.bigint "plan_id", null: false
+    t.bigint "asset_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["plan_id"], name: "index_user_transactions_on_plan_id"
-    t.index ["user_id"], name: "index_user_transactions_on_user_id"
+    t.string "protocol"
+    t.string "address"
+    t.integer "remaining"
+    t.integer "elapsed"
+    t.string "transaction_id"
+    t.index ["asset_id"], name: "index_releases_on_asset_id"
+    t.index ["user_id"], name: "index_releases_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,8 +72,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_05_161102) do
     t.datetime "updated_at", null: false
     t.integer "referrer_id"
     t.string "referral_code"
+    t.integer "role", limit: 2, default: 0
   end
 
-  add_foreign_key "user_transactions", "plans"
-  add_foreign_key "user_transactions", "users"
+  add_foreign_key "assets", "plans"
+  add_foreign_key "assets", "users"
+  add_foreign_key "releases", "assets"
+  add_foreign_key "releases", "users"
 end

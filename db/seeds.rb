@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-UserTransaction.destroy_all
+Asset.destroy_all
 User.destroy_all
 Plan.destroy_all
 
@@ -24,9 +24,8 @@ Plan.create(name: "four", days: 0, profit: 11, penalty: 0, plan_type: "flexible"
   )
 
   12.times do
-    user.user_transactions.create!(
+    user.assets.create!(
       amount: Faker::Number.between(from: 100, to: 99999),
-      action: [0,1].sample,
       plan: Plan.all.sample,
       status: [0,2,1].sample
     )

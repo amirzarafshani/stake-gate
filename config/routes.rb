@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
   resources :referral_rates
+  resources :plans, only: [:index]
+  resources :assets, only: [:index, :create]
+  resources :releases, only: [:index, :create]
   post '/auth/login', to: 'authentication#login'
   post '/auth/register', to: 'authentication#register'
   get '/profile', to: 'profiles#index'
-  get '/profile/transactions', to: 'profiles#transactions'
+  get '/referrals', to: 'profiles#referrals'
   namespace :admin do
     resources :users
     resources :plans
-    resources :user_transactions
+    resources :referral_rates
+    resources :assets
+    resources :releases
+    get 'dashboard', to: "dashboard#index"
   end
 end
