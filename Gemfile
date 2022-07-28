@@ -39,6 +39,8 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.18'
 gem 'jwt', '~> 2.4', '>= 2.4.1'
 gem 'active_model_serializers', '~> 0.10.2'
 gem 'will_paginate', '~> 3.3', '>= 3.3.1'
+gem 'faye-websocket'
+gem 'thin'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

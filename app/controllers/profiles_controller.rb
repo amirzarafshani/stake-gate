@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
 
   def index
     render json: {
+      referral_code: current_user.referral_code,
       labels: current_user.assets.map {|asset| asset.created_at.strftime("%Y-%m-%d") },
       amounts: current_user.assets.map {|asset| asset.amount.to_i },
       profits: current_user.assets.map {|asset| asset.calculated_profit.to_i }

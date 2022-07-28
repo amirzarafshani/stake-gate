@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_17_135728) do
   enable_extension "plpgsql"
 
   create_table "assets", force: :cascade do |t|
-    t.decimal "amount"
+    t.decimal "amount", precision: 8, scale: 2
     t.integer "status"
     t.string "transaction_id"
     t.bigint "plan_id", null: false
@@ -45,10 +45,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_17_135728) do
   end
 
   create_table "releases", force: :cascade do |t|
-    t.decimal "amount"
-    t.decimal "current_amount"
-    t.decimal "penalty"
-    t.decimal "profit"
+    t.decimal "amount", precision: 8, scale: 2
+    t.decimal "current_amount", precision: 8, scale: 2
+    t.decimal "penalty", precision: 8, scale: 2
+    t.decimal "profit", precision: 8, scale: 2
     t.integer "status"
     t.bigint "asset_id", null: false
     t.bigint "user_id", null: false
