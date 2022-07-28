@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   post '/auth/register', to: 'authentication#register'
   get '/profile', to: 'profiles#index'
   get '/referrals', to: 'profiles#referrals'
+  get '/sliders', to: 'sliders#index'
   namespace :admin do
+    resources :sliders
     resources :users
     resources :plans
     resources :referral_rates
