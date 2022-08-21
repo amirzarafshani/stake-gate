@@ -1,6 +1,7 @@
 class Asset < ApplicationRecord
   belongs_to :plan, optional: true
   belongs_to :user
+  mount_uploader :image, AssetUploader
 
   enum status: [:pending, :done, :rejected, :archived]
 

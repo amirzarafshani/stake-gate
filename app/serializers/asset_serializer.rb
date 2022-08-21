@@ -1,5 +1,5 @@
 class AssetSerializer < ActiveModel::Serializer
-  attributes :id, :amount, :status, :transaction_id, :staked_at
+  attributes :id, :amount, :status, :transaction_id, :staked_at, :image
   has_one :plan, serializer: PlanSerializer
   has_one :user, serializer: UserSerializer
 

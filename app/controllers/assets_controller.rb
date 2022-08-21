@@ -20,10 +20,11 @@ class AssetsController < ApplicationController
 
   def create
     asset = Asset.create(
-      amount: asset_params[:amount],
-      transaction_id: asset_params[:transaction_id],
+      amount: params[:amount],
+      transaction_id: params[:transaction_id],
       status: 'pending',
-      plan_id: asset_params[:plan_id],
+      plan_id: params[:plan_id],
+      image: params[:image],
       user_id: current_user.id,
     )
     render json: asset
@@ -32,6 +33,6 @@ class AssetsController < ApplicationController
   private
 
   def asset_params
-    params.require(:asset).permit(:amount, :action, :status, :transaction_id, :plan_id)
+    params.require(:asset).permit(:amount, :action, :image, :status, :transaction_id, :plan_id)
   end
 end
